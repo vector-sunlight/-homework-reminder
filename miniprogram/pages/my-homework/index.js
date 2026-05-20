@@ -1,6 +1,6 @@
 // 我的作业页面 — 展示个人待完成/已完成作业，支持打卡操作
 const { callCloud } = require('../../utils/cloud');
-const { calcDeadline } = require('../../utils/format');
+const { calcDeadline, formatShort, formatDateTime } = require('../../utils/format');
 const { USER_ASSIGNMENT_STATUS } = require('../../utils/constants');
 
 Page({
@@ -43,14 +43,23 @@ Page({
         userId: app.globalData.openId
       });
 
-      // 分离待完成和已完成，按 DDL 排序
+      // 分离待完成和已完成，按 DDL 排序，附加计算字段
       const pending = (res.assignments || [])
         .filter(a => a.status === USER_ASSIGNMENT_STATUS.PENDING)
-        .sort((a, b) => new Date(a.ddl) - new Date(b.ddl));
+        .sort((a, b) => new Date(a.ddl) - new Date(b.ddl))
+        .map(a => ({
+          ...a,
+          _deadline: calcDeadline(a.ddl),
+          _ddlFormatted: formatShort(a.ddl)
+        }));
 
       const completed = (res.assignments || [])
         .filter(a => a.status === USER_ASSIGNMENT_STATUS.COMPLETED)
-        .sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt));
+        .sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt))
+        .map(a => ({
+          ...a,
+          _completedFormatted: formatDateTime(a.completedAt)
+        }));
 
       this.setData({
         pendingList: pending,
@@ -89,6 +98,7 @@ Page({
       if (item) {
         item.status = USER_ASSIGNMENT_STATUS.COMPLETED;
         item.completedAt = new Date().toISOString();
+        item._completedFormatted = formatDateTime(item.completedAt);
         this.setData({
           pendingList: this.data.pendingList.filter(a => a.assignmentId !== id),
           completedList: [item, ...this.data.completedList],

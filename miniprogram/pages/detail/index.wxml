@@ -40,7 +40,7 @@
       </view>
       <view class="meta-row">
         <view class="meta-label">截止时间</view>
-        <view class="meta-value">{{assignment.ddl}}</view>
+        <view class="meta-value">{{assignment._ddlFormatted}}</view>
       </view>
       <view class="meta-row">
         <view class="meta-label">已同步</view>

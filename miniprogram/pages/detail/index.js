@@ -30,11 +30,12 @@ Page({
         userId: app.globalData.openId
       });
 
-      // 计算 DDL 状态
+      // 计算 DDL 状态和格式化时间
       const deadline = calcDeadline(res.assignment.ddl);
+      const ddlFormatted = formatDateTime(res.assignment.ddl);
 
       this.setData({
-        assignment: { ...res.assignment, _deadline: deadline },
+        assignment: { ...res.assignment, _deadline: deadline, _ddlFormatted: ddlFormatted },
         isSynced: res.isSynced || false,
         isCompleted: res.isCompleted || false,
         loading: false
