@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "作业墙",
+  "usingComponents": {
+    "assignment-card": "/components/assignment-card/index",
+    "empty-state": "/components/empty-state/index"
+  }
+}

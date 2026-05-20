@@ -1,0 +1,133 @@
+/* 作业防忘本 — 全局样式 */
+
+/* === 颜色变量 === */
+page {
+  --primary: #4A90D9;
+  --primary-light: #7AB8F5;
+  --danger: #E74C3C;
+  --warning: #F39C12;
+  --success: #27AE60;
+  --text-primary: #2C3E50;
+  --text-secondary: #7F8C8D;
+  --text-hint: #BDC3C7;
+  --bg-page: #F5F7FA;
+  --bg-card: #FFFFFF;
+  --border: #ECF0F1;
+  --shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  box-sizing: border-box;
+}
+
+/* === 通用工具类 === */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* === 页面容器 === */
+.page-container {
+  min-height: 100vh;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+
+/* === 卡片样式 === */
+.card {
+  background: var(--bg-card);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: var(--shadow);
+}
+
+/* === 按钮 === */
+.btn-primary {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-radius: 12rpx !important;
+  border: none !important;
+}
+
+.btn-primary:active {
+  opacity: 0.85;
+}
+
+.btn-danger {
+  background: var(--danger) !important;
+  color: #fff !important;
+  border-radius: 12rpx !important;
+  border: none !important;
+}
+
+.btn-outline {
+  background: #fff !important;
+  color: var(--primary) !important;
+  border: 2rpx solid var(--primary) !important;
+  border-radius: 12rpx !important;
+}
+
+/* === DDL 状态标签颜色 === */
+.ddl-safe {
+  color: var(--success);
+  background: #E8F8F0;
+}
+
+.ddl-warning {
+  color: var(--warning);
+  background: #FEF3E2;
+}
+
+.ddl-danger {
+  color: var(--danger);
+  background: #FDEDEC;
+}
+
+/* === 空状态 === */
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  color: var(--text-hint);
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}

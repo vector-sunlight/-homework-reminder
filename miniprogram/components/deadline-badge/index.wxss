@@ -1,0 +1,28 @@
+/* DDL 倒计时徽章样式 */
+
+.badge {
+  display: inline-block;
+  font-size: 22rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+}
+
+.badge-safe {
+  color: var(--success);
+  background: #E8F8F0;
+}
+
+.badge-warning {
+  color: var(--warning);
+  background: #FEF3E2;
+}
+
+.badge-danger {
+  color: var(--danger);
+  background: #FDEDEC;
+}
+
+.badge-expired {
+  color: #fff;
+  background: var(--danger);
+}

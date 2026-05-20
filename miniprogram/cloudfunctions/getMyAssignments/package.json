@@ -1,0 +1,1 @@
+{"name":"getMyAssignments","version":"1.0.0","description":"获取用户的作业列表（含作业详情）","main":"index.js","dependencies":{"wx-server-sdk":"latest"}}

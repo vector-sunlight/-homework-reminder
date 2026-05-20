@@ -1,0 +1,132 @@
+<!-- 个人中心页面 — 用户信息卡片、班级管理、统计、管理员入口 -->
+<view class="page-container">
+  <!-- 用户信息卡片 -->
+  <view class="profile-card card">
+    <view class="profile-avatar">
+      <image
+        wx:if="{{userInfo && userInfo.avatarUrl}}"
+        class="avatar-img"
+        src="{{userInfo.avatarUrl}}"
+        mode="aspectFill"
+      />
+      <view wx:else class="avatar-placeholder">👤</view>
+    </view>
+    <view class="profile-info">
+      <view class="profile-name">
+        {{userInfo ? userInfo.nickName : '点击头像登录'}}
+      </view>
+      <view wx:if="{{hasClass}}" class="profile-class">
+        {{className}}
+      </view>
+      <view wx:else class="profile-no-class">
+        暂未加入班级
+      </view>
+    </view>
+  </view>
+
+  <!-- 作业统计卡片（已加入班级时显示） -->
+  <view wx:if="{{hasClass}}" class="stats-card card">
+    <view class="stats-row">
+      <view class="stat-item">
+        <view class="stat-num">{{stats.pending}}</view>
+        <view class="stat-label">待完成</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <view class="stat-num">{{stats.completed}}</view>
+        <view class="stat-label">已完成</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 班级信息区 -->
+  <view class="section">
+    <view class="section-title">班级</view>
+    <van-cell-group>
+      <!-- 已加入班级：显示邀请码 -->
+      <block wx:if="{{hasClass}}">
+        <van-cell
+          title="班级邀请码"
+          value="{{inviteCode}}"
+          icon="friends-o"
+          bind:click="copyInviteCode"
+          is-link
+        />
+      </block>
+      <!-- 未加入班级：显示加入/创建按钮 -->
+      <block wx:else>
+        <van-cell
+          title="加入班级"
+          label="输入邀请码加入已有班级"
+          icon="add-o"
+          bind:click="showJoin"
+          is-link
+        />
+        <van-cell
+          title="创建班级"
+          label="创建新班级并邀请同学"
+          icon="add-o"
+          bind:click="showCreate"
+          is-link
+        />
+      </block>
+    </van-cell-group>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="section">
+    <view class="section-title">其他</view>
+    <van-cell-group>
+      <van-cell
+        wx:if="{{isAdmin}}"
+        title="管理面板"
+        icon="setting-o"
+        bind:click="goAdmin"
+        is-link
+      />
+      <van-cell
+        title="关于作业防忘本"
+        icon="info-o"
+        bind:click="goAbout"
+        is-link
+      />
+    </van-cell-group>
+  </view>
+
+  <!-- 加入班级弹窗 -->
+  <van-dialog
+    show="{{showJoinDialog}}"
+    title="加入班级"
+    show-cancel-button
+    bind:close="closeDialogs"
+    bind:confirm="joinClass"
+  >
+    <view class="dialog-body">
+      <van-field
+        value="{{inviteInput}}"
+        placeholder="请输入6位邀请码"
+        maxlength="6"
+        bind:change="onInviteInput"
+        border="{{true}}"
+      />
+    </view>
+  </van-dialog>
+
+  <!-- 创建班级弹窗 -->
+  <van-dialog
+    show="{{showCreateDialog}}"
+    title="创建班级"
+    show-cancel-button
+    bind:close="closeDialogs"
+    bind:confirm="createClass"
+  >
+    <view class="dialog-body">
+      <van-field
+        value="{{createClassName}}"
+        placeholder="请输入班级名称"
+        bind:change="onClassNameInput"
+        border="{{true}}"
+      />
+    </view>
+  </van-dialog>
+</view>

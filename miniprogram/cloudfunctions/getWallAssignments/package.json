@@ -1,0 +1,1 @@
+{"name":"getWallAssignments","version":"1.0.0","description":"获取班级作业墙列表","main":"index.js","dependencies":{"wx-server-sdk":"latest"}}

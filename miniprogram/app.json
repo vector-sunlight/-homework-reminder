@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/homework-wall/index",
+    "pages/my-homework/index",
+    "pages/profile/index",
+    "pages/publish/index",
+    "pages/detail/index",
+    "pages/admin/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#4A90D9",
+    "navigationBarTitleText": "作业防忘本",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F7FA"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4A90D9",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/homework-wall/index",
+        "text": "作业墙",
+        "iconPath": "images/tab-wall.png",
+        "selectedIconPath": "images/tab-wall-active.png"
+      },
+      {
+        "pagePath": "pages/my-homework/index",
+        "text": "我的作业",
+        "iconPath": "images/tab-mine.png",
+        "selectedIconPath": "images/tab-mine-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "images/tab-profile.png",
+        "selectedIconPath": "images/tab-profile-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-notify": "@vant/weapp/notify/index"
+  },
+  "cloud": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

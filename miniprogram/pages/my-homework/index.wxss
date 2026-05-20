@@ -1,0 +1,96 @@
+/* 我的作业页面样式 */
+
+.header-bar {
+  padding: 20rpx 0 16rpx;
+}
+
+.header-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.empty-wrapper {
+  padding-top: 80rpx;
+}
+
+.assignment-list {
+  padding: 20rpx 0 40rpx;
+}
+
+/* 我的作业卡片 */
+.my-assignment-item {
+  position: relative;
+}
+
+.my-assignment-item.completed {
+  opacity: 0.75;
+}
+
+.item-header {
+  margin-bottom: 12rpx;
+}
+
+.course-tag {
+  max-width: 60%;
+  font-size: 24rpx;
+  color: var(--primary);
+  background: #EBF3FB;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.deadline-badge {
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.deadline-badge.ddl-safe {
+  color: var(--success);
+  background: #E8F8F0;
+}
+
+.deadline-badge.ddl-warning {
+  color: var(--warning);
+  background: #FEF3E2;
+}
+
+.deadline-badge.ddl-danger,
+.deadline-badge.ddl-expired {
+  color: var(--danger);
+  background: #FDEDEC;
+}
+
+.item-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+.completed-text {
+  color: var(--text-hint);
+}
+
+.item-content {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16rpx;
+}
+
+.item-footer {
+  padding-top: 16rpx;
+  border-top: 1rpx solid var(--border);
+}
+
+.ddl-text {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.completed-time {
+  font-size: 24rpx;
+  color: var(--success);
+}

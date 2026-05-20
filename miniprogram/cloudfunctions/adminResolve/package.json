@@ -1,0 +1,1 @@
+{"name":"adminResolve","version":"1.0.0","description":"管理员操作：举报处理、用户管理","main":"index.js","dependencies":{"wx-server-sdk":"latest"}}

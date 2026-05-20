@@ -1,0 +1,47 @@
+<!-- 作业墙页面 — 班级作业列表 + 课程筛选 + 发布入口 -->
+<view class="page-container">
+  <!-- 顶部操作栏：标题 + 发布按钮 -->
+  <view class="header-bar">
+    <view class="header-title">作业墙</view>
+    <van-button type="primary" size="small" round bind:tap="goPublish" icon="plus">
+      发布作业
+    </van-button>
+  </view>
+
+  <!-- 课程筛选标签：横向滚动 -->
+  <scroll-view class="filter-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="filter-tags">
+      <view
+        wx:for="{{courseFilters}}"
+        wx:key="*this"
+        class="filter-tag {{activeFilter === item ? 'filter-tag--active' : ''}}"
+        data-course="{{item}}"
+        bind:tap="onFilterTap"
+      >
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 作业列表 -->
+  <view wx:if="{{!loading && assignments.length === 0}}">
+    <empty-state text="还没有作业，快来发布第一条吧" />
+  </view>
+
+  <view wx:if="{{assignments.length > 0}}" class="assignment-list">
+    <assignment-card
+      wx:for="{{assignments}}"
+      wx:key="_id"
+      assignment="{{item}}"
+      bind:detail="goDetail"
+    />
+  </view>
+
+  <!-- 加载更多提示 -->
+  <view wx:if="{{loading}}" class="loading-tip">
+    <van-loading size="20" /> 加载中...
+  </view>
+  <view wx:elif="{{!loadMore && assignments.length > 0}}" class="end-tip">
+    — 没有更多了 —
+  </view>
+</view>

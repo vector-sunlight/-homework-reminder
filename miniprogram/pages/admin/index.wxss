@@ -1,0 +1,83 @@
+/* 管理员面板页面样式 */
+
+.header-bar {
+  padding: 20rpx 0 16rpx;
+}
+
+.header-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.center-loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 120rpx;
+}
+
+.list-section {
+  padding: 20rpx 0 40rpx;
+}
+
+/* 举报卡片 */
+.report-item {
+  margin-bottom: 20rpx;
+}
+
+.report-header {
+  margin-bottom: 16rpx;
+}
+
+.report-reason {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--danger);
+}
+
+.report-body {
+  display: flex;
+  margin-bottom: 10rpx;
+}
+
+.report-label {
+  font-size: 24rpx;
+  color: var(--text-hint);
+  min-width: 140rpx;
+}
+
+.report-value {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  flex: 1;
+  word-break: break-all;
+}
+
+.report-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid var(--border);
+}
+
+/* 用户卡片 */
+.user-item {
+  margin-bottom: 16rpx;
+}
+
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-name {
+  font-size: 30rpx;
+  color: var(--text-primary);
+  margin-bottom: 4rpx;
+}
+
+.user-class {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}

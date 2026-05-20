@@ -1,0 +1,9 @@
+{
+  "triggers": [
+    {
+      "name": "ddlReminder",
+      "type": "timer",
+      "config": "0 0 * * * * *"
+    }
+  ]
+}

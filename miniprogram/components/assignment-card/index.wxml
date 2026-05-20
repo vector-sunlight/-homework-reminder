@@ -1,0 +1,25 @@
+<!-- 作业卡片组件 — 课程名、标题、内容预览、DDL倒计时、同步数 -->
+<view class="card-wrapper" bind:tap="onTap">
+  <!-- 课程名 + DDL 状态 -->
+  <view class="card-header">
+    <view class="card-course text-ellipsis">{{assignment.courseName}}</view>
+    <view class="card-deadline ddl-{{_deadline.level}}">
+      {{_deadline.text}}
+    </view>
+  </view>
+
+  <!-- 标题 -->
+  <view class="card-title">{{assignment.title}}</view>
+
+  <!-- 内容预览（2行截断） -->
+  <view class="card-content text-ellipsis-2">{{assignment.content}}</view>
+
+  <!-- 底部：DDL 时间 + 同步数 + 详情入口 -->
+  <view class="card-footer">
+    <view class="card-ddl-text">⏰ {{_ddlFormatted}}</view>
+    <view class="card-footer-right">
+      <view class="card-sync-count">{{assignment.syncCount || 0}} 人已同步</view>
+      <view class="card-detail-link">详情 →</view>
+    </view>
+  </view>
+</view>

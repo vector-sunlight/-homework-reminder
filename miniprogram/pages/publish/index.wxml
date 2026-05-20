@@ -1,0 +1,88 @@
+<!-- 发布作业页面 — 表单：课程、标题、内容、图片、截止时间 -->
+<view class="page-container">
+  <view class="form-card card">
+    <!-- 课程名称 -->
+    <van-field
+      value="{{courseName}}"
+      placeholder="请输入课程名称，如：软件工程导论"
+      label="课程"
+      maxlength="30"
+      required
+      bind:change="onCourseInput"
+    />
+
+    <!-- 作业标题 -->
+    <van-field
+      value="{{title}}"
+      placeholder="请输入作业标题"
+      label="标题"
+      maxlength="50"
+      required
+      bind:change="onTitleInput"
+    />
+
+    <!-- 作业内容 -->
+    <van-field
+      value="{{content}}"
+      type="textarea"
+      placeholder="请输入作业详细内容..."
+      label="内容"
+      maxlength="500"
+      autosize
+      required
+      bind:change="onContentInput"
+    />
+
+    <!-- 添加图片 -->
+    <view class="upload-section">
+      <view class="upload-label">图片（可选，最多9张）</view>
+      <van-uploader
+        file-list="{{images}}"
+        max-count="9"
+        upload-text="添加图片"
+        use-before-read
+        bind:after-read="afterUpload"
+        bind:delete="onDeleteImage"
+      />
+    </view>
+
+    <!-- 截止时间 -->
+    <van-field
+      value="{{ddlDisplay}}"
+      placeholder="请选择截止时间"
+      label="截止时间"
+      readonly
+      required
+      is-link
+      bind:click="showPicker"
+    />
+
+    <!-- 时间选择器（弹出层） -->
+    <van-popup
+      show="{{showDdlPicker}}"
+      position="bottom"
+      bind:close="closePicker"
+    >
+      <van-datetime-picker
+        type="datetime"
+        min-date="{{currentDate}}"
+        bind:confirm="onDdlConfirm"
+        bind:cancel="closePicker"
+      />
+    </van-popup>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-area">
+    <van-button
+      type="primary"
+      block
+      round
+      loading="{{submitting}}"
+      loading-text="发布中..."
+      bind:click="onSubmit"
+    >
+      确认发布
+    </van-button>
+  </view>
+</view>

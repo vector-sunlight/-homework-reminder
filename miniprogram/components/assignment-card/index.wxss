@@ -1,0 +1,104 @@
+/* 作业卡片组件样式 */
+
+.card-wrapper {
+  background: var(--bg-card);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s;
+}
+
+.card-wrapper:active {
+  transform: scale(0.985);
+}
+
+/* 头部 */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.card-course {
+  max-width: 60%;
+  font-size: 24rpx;
+  color: var(--primary);
+  background: #EBF3FB;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.card-deadline {
+  font-size: 22rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+  flex-shrink: 0;
+}
+
+.card-deadline.ddl-safe {
+  color: var(--success);
+  background: #E8F8F0;
+}
+
+.card-deadline.ddl-warning {
+  color: var(--warning);
+  background: #FEF3E2;
+}
+
+.card-deadline.ddl-danger {
+  color: var(--danger);
+  background: #FDEDEC;
+}
+
+.card-deadline.ddl-expired {
+  color: #fff;
+  background: var(--danger);
+}
+
+/* 标题 */
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+/* 内容预览 */
+.card-content {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16rpx;
+}
+
+/* 底部 */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16rpx;
+  border-top: 1rpx solid var(--border);
+}
+
+.card-ddl-text {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.card-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.card-sync-count {
+  font-size: 22rpx;
+  color: var(--text-hint);
+}
+
+.card-detail-link {
+  font-size: 24rpx;
+  color: var(--primary);
+}

@@ -1,0 +1,1 @@
+{"name":"getAssignmentDetail","version":"1.0.0","description":"获取作业详情及用户同步状态","main":"index.js","dependencies":{"wx-server-sdk":"latest"}}

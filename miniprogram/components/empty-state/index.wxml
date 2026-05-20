@@ -1,0 +1,5 @@
+<!-- 空状态组件 — 图标 + 提示文字 -->
+<view class="empty-container">
+  <view class="empty-icon">{{icon}}</view>
+  <view class="empty-text">{{text}}</view>
+</view>

@@ -1,0 +1,1 @@
+{"name":"markComplete","version":"1.0.0","description":"标记作业为已完成","main":"index.js","dependencies":{"wx-server-sdk":"latest"}}

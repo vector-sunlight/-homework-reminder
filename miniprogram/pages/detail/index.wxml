@@ -1,0 +1,94 @@
+<!-- 作业详情页面 — 完整内容展示、同步操作、举报入口 -->
+<view class="page-container">
+  <van-loading wx:if="{{loading}}" size="24" class="center-loading" />
+
+  <block wx:if="{{!loading && assignment}}">
+    <!-- 课程标签 + DDL状态 -->
+    <view class="detail-header flex-between">
+      <view class="course-tag">{{assignment.courseName}}</view>
+      <view class="deadline-badge ddl-{{assignment._deadline.level}}">
+        {{assignment._deadline.text}}
+      </view>
+    </view>
+
+    <!-- 作业标题 -->
+    <view class="detail-title">{{assignment.title}}</view>
+
+    <!-- 作业内容 -->
+    <view class="detail-content card">
+      <view class="content-text">{{assignment.content}}</view>
+
+      <!-- 图片展示 -->
+      <view wx:if="{{assignment.images && assignment.images.length > 0}}" class="image-grid">
+        <image
+          wx:for="{{assignment.images}}"
+          wx:key="*this"
+          class="content-image"
+          src="{{item}}"
+          mode="aspectFill"
+          data-url="{{item}}"
+          bind:tap="previewImage"
+        />
+      </view>
+    </view>
+
+    <!-- 元信息 -->
+    <view class="detail-meta card">
+      <view class="meta-row">
+        <view class="meta-label">发布者</view>
+        <view class="meta-value">{{assignment.publisherName}}</view>
+      </view>
+      <view class="meta-row">
+        <view class="meta-label">截止时间</view>
+        <view class="meta-value">{{assignment.ddl}}</view>
+      </view>
+      <view class="meta-row">
+        <view class="meta-label">已同步</view>
+        <view class="meta-value">{{assignment.syncCount || 0}} 人</view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="detail-actions">
+      <van-button
+        wx:if="{{!isSynced}}"
+        type="primary"
+        block
+        round
+        icon="add-o"
+        bind:click="onSync"
+      >
+        同步到我的作业
+      </van-button>
+      <view wx:else class="synced-tip">
+        <van-tag type="primary" size="medium">已同步</van-tag>
+        <view class="synced-hint">可在"我的作业"中查看</view>
+      </view>
+
+      <!-- 举报入口 -->
+      <view class="report-link" bind:tap="showReport">
+        🚩 举报此作业
+      </view>
+    </view>
+  </block>
+
+  <!-- 举报弹窗 -->
+  <van-dialog
+    show="{{showReportDialog}}"
+    title="举报作业"
+    show-cancel-button
+    bind:close="closeReport"
+    bind:confirm="submitReport"
+  >
+    <view class="dialog-body">
+      <van-field
+        value="{{reportReason}}"
+        type="textarea"
+        placeholder="请描述举报原因..."
+        maxlength="200"
+        bind:change="onReportReasonInput"
+        border="{{true}}"
+      />
+    </view>
+  </van-dialog>
+</view>

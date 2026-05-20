@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "作业详情",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
+  }
+}

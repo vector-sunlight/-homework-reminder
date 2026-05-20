@@ -1,0 +1,1 @@
+{"name":"syncAssignment","version":"1.0.0","description":"用户同步作业到个人列表","main":"index.js","dependencies":{"wx-server-sdk":"latest"}}

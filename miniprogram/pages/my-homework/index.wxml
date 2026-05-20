@@ -1,0 +1,85 @@
+<!-- 我的作业页面 — 待完成/已完成双标签 + 打卡按钮 -->
+<view class="page-container">
+  <!-- 顶部标题 -->
+  <view class="header-bar">
+    <view class="header-title">我的作业</view>
+  </view>
+
+  <!-- 选项卡：待完成 / 已完成 -->
+  <van-tabs
+    active="{{activeTab}}"
+    bind:change="onTabChange"
+    color="#4A90D9"
+    title-active-color="#4A90D9"
+  >
+    <!-- 待完成 -->
+    <van-tab title="待完成 ({{pendingCount}})" name="pending">
+      <view wx:if="{{pendingList.length === 0}}" class="empty-wrapper">
+        <empty-state text="暂无待完成的作业" />
+      </view>
+      <view wx:else class="assignment-list">
+        <view
+          wx:for="{{pendingList}}"
+          wx:key="_id"
+          class="my-assignment-item card"
+        >
+          <!-- DDL 状态徽章 -->
+          <view class="item-header flex-between">
+            <view class="course-tag van-elip">{{item.courseName}}</view>
+            <view class="deadline-badge ddl-{{item._deadline && item._deadline.level}}">
+              {{item._deadline ? item._deadline.text : ''}}
+            </view>
+          </view>
+
+          <!-- 作业标题 -->
+          <view class="item-title">{{item.title}}</view>
+
+          <!-- 作业内容预览 -->
+          <view class="item-content text-ellipsis-2">{{item.content}}</view>
+
+          <!-- 底部操作栏 -->
+          <view class="item-footer flex-between">
+            <view class="ddl-text">
+              DDL: {{item._ddlFormatted || item.ddl}}
+            </view>
+            <van-button
+              type="success"
+              size="small"
+              round
+              data-id="{{item.assignmentId || item._id}}"
+              bind:tap="onMarkComplete"
+            >
+              标记完成
+            </van-button>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+
+    <!-- 已完成 -->
+    <van-tab title="已完成 ({{completedCount}})" name="completed">
+      <view wx:if="{{completedList.length === 0}}" class="empty-wrapper">
+        <empty-state text="还没有完成的作业" />
+      </view>
+      <view wx:else class="assignment-list">
+        <view
+          wx:for="{{completedList}}"
+          wx:key="_id"
+          class="my-assignment-item card completed"
+        >
+          <view class="item-header flex-between">
+            <view class="course-tag van-elip">{{item.courseName}}</view>
+            <van-tag type="success" size="medium">已完成</van-tag>
+          </view>
+          <view class="item-title completed-text">{{item.title}}</view>
+          <view class="item-content text-ellipsis-2 completed-text">{{item.content}}</view>
+          <view class="item-footer">
+            <view class="completed-time">
+              完成于 {{item._completedFormatted || item.completedAt}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

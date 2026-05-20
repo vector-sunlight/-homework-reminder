@@ -1,0 +1,22 @@
+# 依赖
+miniprogram/node_modules/
+miniprogram/miniprogram_npm/
+
+# 云函数依赖（云环境自带 wx-server-sdk）
+miniprogram/cloudfunctions/*/node_modules/
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 本地配置
+.claude/
+
+# 临时文件
+~$*.docx

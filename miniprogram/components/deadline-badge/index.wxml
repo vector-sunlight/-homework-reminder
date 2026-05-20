@@ -1,0 +1,2 @@
+<!-- DDL倒计时徽章 — 彩色标签显示剩余时间 -->
+<view class="badge badge-{{level}}">{{text}}</view>

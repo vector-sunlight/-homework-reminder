@@ -1,0 +1,101 @@
+<!-- 管理员面板页面 — 举报处理 + 用户管理 -->
+<view class="page-container">
+  <view class="header-bar">
+    <view class="header-title">管理面板</view>
+  </view>
+
+  <van-tabs
+    active="{{activeTab}}"
+    bind:change="onTabChange"
+    color="#4A90D9"
+    title-active-color="#4A90D9"
+  >
+    <!-- 举报管理 -->
+    <van-tab title="举报管理" name="reports">
+      <van-loading wx:if="{{loading}}" size="24" class="center-loading" />
+
+      <view wx:elif="{{reports.length === 0}}">
+        <empty-state text="暂无待处理举报" />
+      </view>
+
+      <view wx:else class="list-section">
+        <view
+          wx:for="{{reports}}"
+          wx:key="_id"
+          class="report-item card"
+        >
+          <!-- 举报状态 -->
+          <view class="report-header flex-between">
+            <view class="report-reason">{{item.reason}}</view>
+            <van-tag
+              type="{{item.status === 'pending' ? 'warning' : (item.status === 'resolved' ? 'success' : 'default')}}"
+              size="medium"
+            >
+              {{item.status === 'pending' ? '待处理' : (item.status === 'resolved' ? '已处理' : '已忽略')}}
+            </van-tag>
+          </view>
+
+          <!-- 被举报作业信息 -->
+          <view class="report-body">
+            <view class="report-label">被举报作业</view>
+            <view class="report-value">{{item.assignmentTitle || '（已删除）'}}</view>
+          </view>
+          <view class="report-body">
+            <view class="report-label">举报人</view>
+            <view class="report-value">{{item.reporterName || '匿名'}}</view>
+          </view>
+
+          <!-- 操作按钮（仅待处理状态） -->
+          <view wx:if="{{item.status === 'pending'}}" class="report-actions">
+            <van-button
+              size="small"
+              plain
+              type="default"
+              data-id="{{item._id}}"
+              bind:click="dismissReport"
+            >
+              忽略
+            </van-button>
+            <van-button
+              size="small"
+              type="danger"
+              data-id="{{item._id}}"
+              data-assignment-id="{{item.assignmentId}}"
+              bind:click="deleteAssignment"
+            >
+              删除作业
+            </van-button>
+          </view>
+        </view>
+      </view>
+    </van-tab>
+
+    <!-- 用户管理 -->
+    <van-tab title="用户管理" name="users">
+      <van-loading wx:if="{{loading}}" size="24" class="center-loading" />
+
+      <view wx:elif="{{users.length === 0}}">
+        <empty-state text="暂无用户数据" />
+      </view>
+
+      <view wx:else class="list-section">
+        <view
+          wx:for="{{users}}"
+          wx:key="_id"
+          class="user-item card flex-between"
+        >
+          <view class="user-info">
+            <view class="user-name">{{item.nickname}}</view>
+            <view class="user-class" wx:if="{{item.className}}">{{item.className}}</view>
+          </view>
+          <van-tag
+            type="{{item.role === 'admin' ? 'primary' : 'default'}}"
+            size="medium"
+          >
+            {{item.role === 'admin' ? '管理员' : '学生'}}
+          </van-tag>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

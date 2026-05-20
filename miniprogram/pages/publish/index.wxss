@@ -1,0 +1,22 @@
+/* 发布作业页面样式 */
+
+.form-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.upload-section {
+  padding: 24rpx 32rpx;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.upload-label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 16rpx;
+}
+
+.submit-area {
+  margin-top: 40rpx;
+  padding: 0 20rpx;
+}
